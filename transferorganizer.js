@@ -12,7 +12,8 @@ fs.readdir(downloadPath, function(err, resultFiles) {
   {
     resultFiles.forEach(function(file) {
       var extension = fileExtension(file);
-      if (fs.statSync(path.join(downloadPath, file)).isFile()) {
+
+      if (isFile(file) && hasExtension(file, extension)) {
         files.push(file);
       }
     });
@@ -23,3 +24,11 @@ fs.readdir(downloadPath, function(err, resultFiles) {
     console.log(err);
   }
 })
+
+function hasExtension(file, extension) {
+  return file.trim() != extension.trim();
+}
+
+function isFile(file) {
+  return fs.statSync(path.join(downloadPath, file)).isFile()
+}
