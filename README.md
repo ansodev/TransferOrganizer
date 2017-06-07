@@ -1,2 +1,2 @@
 # TransferOrganizer
-A simple download organizer
+A simple download folder organizer
